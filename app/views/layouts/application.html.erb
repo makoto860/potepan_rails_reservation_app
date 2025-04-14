@@ -15,15 +15,15 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <h1>アカウント情報（メールアドレス、パスワード）の編集ページを作成し、編集機能</h1>
+      <h1>プロフィール（アイコン画像、名前、自己紹介）の編集ページを作成</h1>
 
       <p><%= link_to "TOP", homes_top_path %></p>
-      <p><%= link_to "アカウント", users_account_path %></p>
       <p>フリーワード検索</p>
-
+      
       <% if user_signed_in? %>
         <p>ユーザー名: <%= @user.user_name %></p>
         <p><%= link_to "ログアウト", :destroy_user_session, method: :delete, data: { confirm: "ログアウトしますか？" } %></p>    
+        <p><%= link_to "アカウント", users_account_path %></p>
         <p>ROOMリンク</p>
         <p>RESERVATIONリンク</p>
       <% else %>

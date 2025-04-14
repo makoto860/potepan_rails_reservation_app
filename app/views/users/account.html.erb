@@ -1,8 +1,9 @@
 <h1>Users#account</h1>
 <p>Find me in app/views/users/account.html.erb</p>
 
-<p><%= link_to "アカウント", users_account_path %></p>
-<p><%= link_to "プロフィール", users_profile_path %></p>
+<h1>アカウント画面</h1>
+
+<p><%= link_to "アカウント", users_account_path %>: <%= link_to "プロフィール", users_profile_path %></p>
 
 <p>Email: <%= @user.email %></p>
 <p>パスワード: ******</p>
