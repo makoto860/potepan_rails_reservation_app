@@ -11,14 +11,22 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <h1>トップ画面作成</h1>
-    <p>HOMEリンク</p>
-    <p>新規ログインリンク</p>
-    <p>ログインリンク</p>
-    <p>ログアウトリンク</p>
+
+    <p><%= link_to "TOP", homes_top_path %></p>
     <p>ユーザーの名前</p>
-    <p>ROOMリンク</p>
-    <p>RESERVATIONリンク</p>
+
+    <% if user_signed_in? %>
+      <p><%= link_to "ログアウト", :destroy_user_session, method: :delete, data: { confirm: "ログアウトしますか？" } %></p>    
+      <p>ROOMリンク</p>
+      <p>RESERVATIONリンク</p>
+    <% else %>
+      <p><%= link_to "新規ログイン", new_user_registration_path %></p>
+      <p><%= link_to "ログイン", new_user_session_path %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
