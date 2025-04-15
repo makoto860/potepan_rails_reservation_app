@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'homes/kyoto'
   get 'homes/osaka'
   get 'homes/sapporo'
+  get 'homes/area_search'
 
   devise_for :users
   resources :users
