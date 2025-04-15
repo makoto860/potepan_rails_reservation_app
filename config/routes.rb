@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get 'rooms/index'
   get 'users/account'
   get 'users/profile'
   get 'homes/top'
+  get 'homes/tokyo'
+  get 'homes/kyoto'
+  get 'homes/osaka'
+  get 'homes/sapporo'
 
   devise_for :users
   resources :users

@@ -1,5 +1,23 @@
 class HomesController < ApplicationController
+  before_action :set_user
+
   def top
-    @user = User.find_by(params[:id])
   end
+
+  def tokyo
+  end
+
+  def kyoto
+  end
+
+  def osaka
+  end
+
+  def sapporo
+  end
+
+  private
+    def set_user
+      @user = User.find(current_user.id)
+    end
 end

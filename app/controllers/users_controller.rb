@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user
+
   def account
     @user = User.find(current_user.id)
   end
@@ -33,5 +35,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:user_name, :user_avatar, :user_introduction).merge(user_id: current_user.id)
+    end
+
+    def set_user
+      @user = User.find(current_user.id)
     end
 end

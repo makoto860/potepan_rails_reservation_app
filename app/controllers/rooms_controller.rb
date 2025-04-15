@@ -2,12 +2,10 @@ class RoomsController < ApplicationController
   before_action :set_user
 
   def index
-    @user = User.find_by(params[:user_name])
     @rooms = Room.all
   end
 
   def new
-    @user = User.find_by(params[:user_name])
     @room = Room.new
   end
 
@@ -75,6 +73,6 @@ class RoomsController < ApplicationController
     end
 
     def set_user
-      @user = User.find_by(params[:id])
+      @user = User.find(current_user.id)
     end
 end
