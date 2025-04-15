@@ -1,0 +1,7 @@
+<% if @room.errors.any? %>
+  <% @room.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
