@@ -15,7 +15,7 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <h1>roomモデル、CRUD追加</h1>
+      <h1>施設名は、施設詳細ページへのリンク</h1>
 
       <p><%= link_to "TOP", homes_top_path %></p>
       <p>フリーワード検索</p>
@@ -29,7 +29,7 @@
             <%= image_tag asset_path('default-user-avatar.png'), size: '100x100' %>
           <% end %>
         </p>
-        <p><%= link_to "ログアウト", :destroy_user_session, method: :delete, data: { confirm: "ログアウトしますか？" } %></p>    
+        <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
         <p><%= link_to "アカウント", users_account_path %></p>
         <p><%= link_to "施設一覧", rooms_path %></p>
         <p>RESERVATIONリンク</p>

@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :user_avatar
 
+  has_many :rooms
+
   validates :user_name, presence: true
 end

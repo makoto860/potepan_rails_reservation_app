@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
   def account
-    @user = User.find_by(params[:user_name])
+    @user = User.find(current_user.id)
   end
 
   def profile
-    @user = User.find_by(params[:user_name])
+    @user = User.find(current_user.id)
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 
     if @user.user_avatar.attached?
       @user.user_avatar.attach(params[:user][:user_avatar])
@@ -32,6 +32,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:user_name, :user_avatar, :user_introduction)
+      params.require(:user).permit(:user_name, :user_avatar, :user_introduction).merge(user_id: current_user.id)
     end
 end
