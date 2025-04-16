@@ -1,4 +1,5 @@
 <h1>東京</h1>
+
 <div class="count">
   <p><%= @rooms.count %>件が見つかりました</p>
 </div>
@@ -7,7 +8,7 @@
   <table class="show-table">
     <tr>
       <th>施設名</th>
-      <td><%=link_to room.room_name, room_path(room.id) %></td>
+      <td><%= room.room_name %></td>
     </tr>
 
     <tr>

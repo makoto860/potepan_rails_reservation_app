@@ -7,10 +7,15 @@ Rails.application.routes.draw do
   get 'homes/osaka'
   get 'homes/sapporo'
   get 'homes/area_search'
+  
 
   devise_for :users
   resources :users
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
   root :to => 'homes#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,8 +1,18 @@
 class RoomsController < ApplicationController
   before_action :set_user
 
+  def search
+    @rooms = Room.search(params[:keyword])
+    redirect_to rooms_path(keyword: params[:keyword])
+  end
+
   def index
     @rooms = Room.all
+
+    if params[:keyword].present?
+      @rooms = Room.search(params[:keyword])
+    else
+    end
   end
 
   def new

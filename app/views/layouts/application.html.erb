@@ -15,11 +15,10 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <h1>エリアは、東京・大阪・京都・札幌の4つ</h1>
+      <h1>施設名・施設詳細を対象のフリーワード検索機能</h1>
 
       <p><%= link_to "TOP", homes_top_path %></p>
-      <p>フリーワード検索</p>
-      
+
       <% if user_signed_in? %>
         <p>ユーザー名: <%= @user.user_name %></p>
         <p>
