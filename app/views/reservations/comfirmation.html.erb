@@ -1,0 +1,16 @@
+<h1>reservations/confirmation</h1>
+<h1>予約確認の画面</h1>
+<p><%= link_to "戻る", :back %></p>
+
+<p>room: <%= @room.room_name %></p>
+<p>ユーザー: <%= @user.email %></p>
+<p>人数: <%= @total_people %></p>
+
+<%= form_with url: reservations_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
+  <%= f.hidden_field :user_id, value: @user.id, name: 'reservation[user_id]' %>
+  <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'reservation[check_in_date]' %>
+  <%= f.hidden_field :check_out_date, value: @check_out_date, name: 'reservation[check_out_date]' %>
+  <%= f.hidden_field :total_people, value: @total_people, name: 'reservation[total_people]' %>
+  <%= f.submit "予約を確定する" %>
+<% end %>

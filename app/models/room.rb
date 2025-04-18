@@ -1,7 +1,13 @@
 class Room < ApplicationRecord
   belongs_to :user
 
+  has_many :reservations
+
   has_one_attached :room_avatar
+
+  def reservations_new
+    reservations.new
+  end
 
   validates :room_name, presence: true
   validates :room_detail, presence: true

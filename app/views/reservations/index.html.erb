@@ -1,0 +1,11 @@
+<h1>Reservations#index</h1>
+<p>Find me in app/views/reservations/index.html.erb</p>
+<h1>予約内容の一覧</h1>
+<% @reservations.each do |reservation| %>
+  <table class="show-table">
+    <tr>
+      <th>人数</th>
+      <td><%= reservation.total_people %></td>
+    <tr>
+  </table>
+<% end %>
