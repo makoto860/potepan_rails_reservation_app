@@ -2,11 +2,13 @@
 <h1>予約確認の画面</h1>
 <p><%= link_to "戻る", :back %></p>
 
-<p>room: <%= @room.room_name %></p>
-<p>ユーザー: <%= @user.email %></p>
-<p>人数: <%= @total_people %></p>
+<p>チェックイン日: <%= @reservation.check_in_date %></p>
+<p>チェックアウト日: <%= @reservation.check_out_date %></p>
+<p>合計人数: <%= @reservation.total_people %></p>
+<p>宿泊日数: <%= @reservation.total_date %></p>
+<p>合計支払い金額: <%= @reservation.total_fee %></p>
 
-<%= form_with url: reservations_path, method: :post, local: true do |f| %>
+<%= form_with url: reservations_path, method: :get, local: true do |f| %>
   <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
   <%= f.hidden_field :user_id, value: @user.id, name: 'reservation[user_id]' %>
   <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'reservation[check_in_date]' %>

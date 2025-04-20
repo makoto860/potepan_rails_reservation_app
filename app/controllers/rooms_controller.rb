@@ -3,7 +3,16 @@ class RoomsController < ApplicationController
 
   def search
     @rooms = Room.search(params[:keyword])
-    redirect_to rooms_path(keyword: params[:keyword])
+    redirect_to rooms_own_path(keyword: params[:keyword])
+  end
+
+  def own
+    @rooms = Room.all
+
+    if params[:keyword].present?
+      @rooms = Room.search(params[:keyword])
+    else
+    end
   end
 
   def index
@@ -32,7 +41,7 @@ class RoomsController < ApplicationController
 
     if @room.save
       flash[:notice] = "施設を新規登録しました"
-      redirect_to :rooms, id: @room.id
+      redirect_to room_path(@room)
     else
       flash[:alert] = "施設を登録できませんでした"
       render :new, status: :unprocessable_entity
@@ -64,7 +73,7 @@ class RoomsController < ApplicationController
 
     if @room.update(room_params)
       flash[:notice] = "施設IDが「#{@room.id}」の情報を更新しました"
-      redirect_to :rooms, id: @room.id
+      redirect_to room_path(@room)
     else
       flash[:alert] = "RoomIDが「#{@room.id}」の情報を更新できませんでした"
       render "edit", status: :unprocessable_entity

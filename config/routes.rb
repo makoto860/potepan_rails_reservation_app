@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'reservations/index'
+  get 'rooms/own'
   get 'users/account'
   get 'users/profile'
   get 'homes/top'
@@ -11,14 +12,18 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
-  resources :reservations
-
+  
   resources :rooms do
     collection do
       get 'search'
     end
   end
-  post 'reservations/confirmation', to: 'reservations#confirmation', as: :reservations_confirmation
+
+  resources :reservations, only: [:create, :index] do
+    collection do
+      post :confirmation
+    end
+  end
   root :to => 'homes#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
