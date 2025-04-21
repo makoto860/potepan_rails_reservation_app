@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to confirmation_reservations_path, notice: '予約が完了しました。'
+      redirect_to reservation_path, notice: '予約が完了しました。'
     else
       @room = @reservation.room
       render :confirmation, alert: '予約が完了できませんでした。', status: :unprocessable_entity
@@ -25,6 +25,8 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
+    @reservation = @room.reservations.new(reservation_params)
   end
 
   def edit

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'reservations/index'
   get 'rooms/own'
   get 'users/account'
   get 'users/profile'
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reservations, only: [:create, :index] do
+  resources :reservations, only: [:create, :index, :show] do
     collection do
       post :confirmation
     end

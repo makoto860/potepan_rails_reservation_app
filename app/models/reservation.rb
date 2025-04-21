@@ -12,4 +12,12 @@ class Reservation < ApplicationRecord
     reservation.room_id = reservation_params[:room_id]
     save
   end
+
+  def sum_of_days
+    (check_out_date.to_date - check_in_date.to_date).to_i if check_in_date.present? && check_out_date.present?
+  end
+
+  def sum_of_fee
+    (room.fee * total_people * sum_of_days).to_i if check_in_date.present? && check_out_date.present?
+  end
 end

@@ -16,12 +16,6 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
-
-    if params[:keyword].present?
-      @rooms = Room.search(params[:keyword])
-    else
-    end
   end
 
   def new
@@ -85,7 +79,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     flash[:notice] = "施設を削除しました"
-    redirect_to :rooms
+    redirect_to rooms_own_path
   end
 
   private

@@ -34,12 +34,15 @@
 <p><%= link_to "戻る", :back %></p>
 
 <% if user_signed_in? %>
+  <p>予約フォーム</p>
+  <ul>
   <%= form_with model: @reservation, url: confirmation_reservations_path, method: :post, local: true, data: { turbo: false } do |f| %>
     <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
     <%= f.hidden_field :user_id, value: current_user.id, name: 'reservation[user_id]' %>
-    <%= f.number_field :total_people, value: 1, name: 'reservation[total_people]' %>
-    <%= f.date_field :check_in_date, name: 'reservation[check_in_date]' %>
-    <%= f.date_field :check_out_date, name: 'reservation[check_out_date]' %>
-    <%= f.submit "確認画面へ" %>
+    <li>合計人数<%= f.number_field :total_people, value: 1, name: 'reservation[total_people]' %></li>
+    <li>チェックイン<%= f.date_field :check_in_date, name: 'reservation[check_in_date]' %></li>
+    <li>チェックアウト<%= f.date_field :check_out_date, name: 'reservation[check_out_date]' %></li>
+    <li><%= f.submit "確認画面へ" %></li>
   <% end %>
+  </ul>
 <% end %>
