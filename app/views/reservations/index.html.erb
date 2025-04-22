@@ -1,11 +1,38 @@
 <h1>Reservations#index</h1>
 <p>Find me in app/views/reservations/index.html.erb</p>
 <h1>予約内容の一覧</h1>
+
 <% @reservations.each do |reservation| %>
   <table class="show-table">
     <tr>
+      <th>施設イメージ</th>
+      <td>
+        <% if reservation.room.room_avatar.attached? %>
+          <%= image_tag reservation.room.room_avatar, size: '100x100' %>
+        <% else %>
+          <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>施設名</th>
+      <td><%= reservation.room.room_name %></td>
+    <tr>
+
+    <tr>
+      <th>施設詳細</th>
+      <td><%= reservation.room.room_detail %></td>
+    <tr>
+
+    <tr>
+      <th>合計料金</th>
+      <td><%= reservation.sum_of_fee.to_i %>円</td>
+    <tr>
+
+    <tr>
       <th>合計人数</th>
-      <td><%= reservation.total_people %></td>
+      <td><%= reservation.total_people %>人</td>
     <tr>
 
     <tr>
@@ -19,10 +46,10 @@
     <tr>
 
     <tr>
-      <th>作成日</th>
+      <th>予約確定日時</th>
       <td><%= reservation.created_at %></td>
     <tr>
 
-<p>----------------------------------------</p>
-  </table>
+    </table>
+    <p>------------------------------------------------------------------------------------------------------</p>
 <% end %>
