@@ -15,7 +15,7 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <h1>予約確認で合計支払い金額を表示</h1>
+      <h1>合計人数が1人以上となるよう、バリデーションを設定</h1>
 
       <p><%= link_to "TOP", homes_top_path %></p>
 
@@ -32,7 +32,7 @@
         <p><%= link_to "アカウント", users_account_path %></p>
         <p><%= link_to "施設の新規登録", :new_room %></p>
         <p><%= link_to "ユーザーが登録した施設一覧", rooms_own_path %></p>
-        <p>RESERVATIONリンク</p>
+        <p><%= link_to "予約済みの施設", :reservations %></p>
       <% else %>
         <p><%= link_to "新規ログイン", new_user_registration_path %></p>
         <p><%= link_to "ログイン", new_user_session_path %></p>

@@ -4,8 +4,25 @@
 <% @reservations.each do |reservation| %>
   <table class="show-table">
     <tr>
-      <th>人数</th>
+      <th>合計人数</th>
       <td><%= reservation.total_people %></td>
     <tr>
+
+    <tr>
+      <th>チェックイン日</th>
+      <td><%= reservation.check_in_date %></td>
+    <tr>
+
+    <tr>
+      <th>チェックアウト日</th>
+      <td><%= reservation.check_out_date %></td>
+    <tr>
+
+    <tr>
+      <th>作成日</th>
+      <td><%= reservation.created_at %></td>
+    <tr>
+
+<p>----------------------------------------</p>
   </table>
 <% end %>

@@ -1,12 +1,15 @@
 <h1>reservations/confirmation</h1>
 <h1>予約確認の画面</h1>
+
 <p><%= link_to "戻る", :back %></p>
+
+<%= render "shared/errors_reservation", obj: @reservation %>
 
 <p>チェックイン日: <%= @reservation.check_in_date %></p>
 <p>チェックアウト日: <%= @reservation.check_out_date %></p>
 <p>合計人数: <%= @reservation.total_people %>人</p>
-<p>宿泊日数: <%= @reservation.sum_of_days %>日</p>
-<p>合計料金: <%= @reservation.sum_of_fee %>円</p>
+<p>宿泊日数: <%= @reservation.sum_of_days.to_i %>日</p>
+<p>合計料金: <%= @reservation.sum_of_fee.to_i %>円</p>
 
 <%= form_with url: reservations_path, method: :get, local: true do |f| %>
   <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>

@@ -34,6 +34,7 @@
 <p><%= link_to "戻る", :back %></p>
 
 <% if user_signed_in? %>
+
   <p>予約フォーム</p>
   <ul>
   <%= form_with model: @reservation, url: confirmation_reservations_path, method: :post, local: true, data: { turbo: false } do |f| %>
