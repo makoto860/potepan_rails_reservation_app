@@ -32,13 +32,13 @@ class Reservation < ApplicationRecord
     if total_people.present?
       (room.fee * total_people * sum_of_days).to_i
     else
-      sum_of_price = 0
+      sum_of_fee = 0
     end
   end
 
   def date_before_check_in
     return if check_in_date.blank?
-    errors.add(:check_in_date, "チェックイン日は翌日以降の日にちを選択してください") if check_in_date < Date.tomorrow
+    errors.add(:check_in_date, "チェックイン日は翌日以降の日にちを選択してください") if check_in_date < Date.today
   end
 
   def date_before_check_out

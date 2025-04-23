@@ -37,17 +37,17 @@
 
     <tr>
       <th>チェックイン日</th>
-      <td><%= reservation.check_in_date %></td>
+      <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
     <tr>
 
     <tr>
       <th>チェックアウト日</th>
-      <td><%= reservation.check_out_date %></td>
+      <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
     <tr>
 
     <tr>
       <th>予約確定日時</th>
-      <td><%= reservation.created_at %></td>
+      <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     <tr>
 
     </table>

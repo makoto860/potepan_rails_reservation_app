@@ -1,5 +1,7 @@
 <h1>rooms/own.html.erb</h1>
+
 <h1>ユーザーが登録した施設一覧</h1>
+
 <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :keyword, placeholder: "施設名、施設詳細", class: "search-input" %>
 <%= form.submit "キーワード検索", class: "search-btn" %>
@@ -35,9 +37,9 @@
           <% end %>
         </td>
         <td><%= room.room_detail %></td>
-        <td><%= room.fee %></td>
+        <td><%= room.fee %>円</td>
         <td><%= room.address %></td>
-        <td><%= room.created_at %></td>
+        <td><%= room.created_at.to_s(:date_jp) %></td>
         <td><%= link_to "施設編集", [:edit, room] %></td>
         <td><%= link_to "施設削除", room, method: :delete, data: { confirm: "施設を削除しますか？" } %></td>
       </tr>
