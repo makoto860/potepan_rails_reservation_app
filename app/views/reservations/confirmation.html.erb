@@ -1,17 +1,18 @@
-<h1>reservations/confirmation</h1>
 <h1>予約確認の画面</h1>
 
 <p><%= link_to "戻る", :back %></p>
 
-<%= render "shared/errors_reservation", obj: @reservation %>
+<ul>
+  <li>施設名: <%= @room.room_name %></li>
+  <li>料金 <%= @room.fee %></li>
+  <li>チェックイン: <%= @check_in_date %></li>
+  <li>チェックアウト: <%= @check_out_date %></li>
+  <li>合計人数: <%= @total_people %></li>
+  <li>宿泊日数: <%= @sum_of_days.to_i %></li>
+  <li>合計料金: <%= @sum_of_fee.to_i %></li>
+</ul>
 
-<p>チェックイン日: <%= @reservation.check_in_date.to_s(:date_jp) %></p>
-<p>チェックアウト日: <%= @reservation.check_out_date.to_s(:date_jp) %></p>
-<p>合計人数: <%= @reservation.total_people %>人</p>
-<p>宿泊日数: <%= @reservation.sum_of_days.to_i %>日</p>
-<p>合計料金: <%= @reservation.sum_of_fee.to_i %>円</p>
-
-<%= form_with url: reservations_path, method: :get, local: true do |f| %>
+<%= form_with url: reservations_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
   <%= f.hidden_field :user_id, value: @user.id, name: 'reservation[user_id]' %>
   <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'reservation[check_in_date]' %>

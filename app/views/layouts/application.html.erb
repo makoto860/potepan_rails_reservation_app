@@ -17,10 +17,14 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <h1>ユーザー名をクリックするとドロップダウンメニューが表示</h1>
+      <h1>reservations/index.html.erbでroomカラム表示</h1>
+      <h1>合計料金、宿泊日数</h1>
+      <h1>バリデーション</h1>
+      <h1>フォーマットtry</h1>
+
       <p><%= link_to "TOP", homes_top_path %></p>
 
-      <% if user_signed_in? %>
+      <% if current_user.present? %>
         <p>
           <% if @user.user_avatar.attached? %>
             <%= image_tag @user.user_avatar, size: '100x100' %>
@@ -31,7 +35,7 @@
 
         <div class="#" id="#">
           <a href="#" class="dropdown-toggle" id="#" role="#" data-toggle="dropdown" aria-haspopup="#" aria-expanded="#">
-            <p>ユーザー名: <%= @user.user_name %></p>
+            <p>ユーザー名: <%= current_user.user_name %></p>
           </a>
 
           <ul class="dropdown-menu" aria-labelledby="#" >

@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reservations, only: [:create, :index, :show] do
+  resources :reservations, only: [:create, :index] do
     collection do
-      post :confirmation
+      post 'confirmation', to: 'reservations#confirmation'
     end
   end
   root :to => 'homes#top'

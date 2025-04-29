@@ -6,13 +6,7 @@
   <table class="show-table">
     <tr>
       <th>施設イメージ</th>
-      <td>
-        <% if reservation.room.room_avatar.attached? %>
-          <%= image_tag reservation.room.room_avatar, size: '100x100' %>
-        <% else %>
-          <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
-        <% end %>
-      </td>
+      <td></td>
     </tr>
 
     <tr>
@@ -22,12 +16,12 @@
 
     <tr>
       <th>施設詳細</th>
-      <td><%= reservation.room.room_detail %></td>
+      <td></td>
     <tr>
 
     <tr>
       <th>合計料金</th>
-      <td><%= reservation.sum_of_fee.to_i %>円</td>
+      <td>円</td>
     <tr>
 
     <tr>
