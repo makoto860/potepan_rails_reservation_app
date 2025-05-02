@@ -1,6 +1,6 @@
 <h1>施設の新規作成</h1>
 
-<%= render "shared/errors_room", obj: @room %>
+<%= render "shared/errors", model: @room %>
 
 <p>施設名、施設詳細、施設料金、住所は必須です</p>
 
@@ -23,7 +23,7 @@
 
     <tr>
       <th><%= f.label :fee, "施設料金" %></th>
-      <td><%= f.number_field :fee %></td>
+      <td><%= f.number_field :fee %>円</td>
     </tr>
 
     <tr>

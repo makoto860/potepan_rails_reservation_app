@@ -7,7 +7,7 @@
 <br>
 
 <% @rooms.each do |room| %>
-  <p>施設名: <%=link_to room.room_name, room_path(room.id) %></p>
+  <p>施設名: <%= room.room_name %></p>
   <p>施設詳細: <%= room.room_detail %></p>
   <p>料金: <%= room.fee %>円</p>
   <p>住所: <%= room.address %></p>

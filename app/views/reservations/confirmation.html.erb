@@ -2,21 +2,28 @@
 
 <p><%= link_to "戻る", :back %></p>
 
+<%= render "shared/errors", model: @reservation %>
+
+<h1>チェックイン、チェックアウト、合計人数は必須です。</h1>
+
 <ul>
-  <li>施設名: <%= @room.room_name %></li>
-  <li>料金 <%= @room.fee %></li>
-  <li>チェックイン: <%= @check_in_date %></li>
-  <li>チェックアウト: <%= @check_out_date %></li>
-  <li>合計人数: <%= @total_people %></li>
-  <li>宿泊日数: <%= @sum_of_days.to_i %></li>
-  <li>合計料金: <%= @sum_of_fee.to_i %></li>
+  <li>ユーザー名: <%= current_user.user_name %></li>
+  <li>メールアドレス: <%= current_user.email %></li>
+  <li>料金: <%= @room.fee %>円</li>
+  <li>チェックイン日: <%= @reservation.check_in_date.try(:to_formatted_s, :date_jp) %></li>
+  <li>チェックアウト日: <%= @reservation.check_out_date.try(:to_formatted_s, :date_jp) %></li>
+  <li>合計人数: <%= @reservation.total_people %>人</li>
+  <li>宿泊日数: <%= @reservation.sum_of_days %>日</li>
+  <li>合計料金: <%= @reservation.sum_of_fee %>円</li>
 </ul>
 
-<%= form_with url: reservations_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
-  <%= f.hidden_field :user_id, value: @user.id, name: 'reservation[user_id]' %>
-  <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'reservation[check_in_date]' %>
-  <%= f.hidden_field :check_out_date, value: @check_out_date, name: 'reservation[check_out_date]' %>
-  <%= f.hidden_field :total_people, value: @total_people, name: 'reservation[total_people]' %>
-  <%= f.submit "予約を確定する" %>
+<% if user_signed_in? %>
+  <%= form_with url: reservations_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :room_id, value: @room.id, name: 'reservation[room_id]' %>
+    <%= f.hidden_field :user_id, value: @user.id, name: 'reservation[user_id]' %>
+    <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'reservation[check_in_date]' %>
+    <%= f.hidden_field :check_out_date, value: @check_out_date, name: 'reservation[check_out_date]' %>
+    <%= f.hidden_field :total_people, value: @total_people, name: 'reservation[total_people]' %>
+    <%= f.submit "予約を確定する" %>
+  <% end %>
 <% end %>

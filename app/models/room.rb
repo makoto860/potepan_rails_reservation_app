@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-  has_many :reservations
+  belongs_to :user
+  has_many :reservations, dependent: :destroy
 
   has_one_attached :room_avatar
 
