@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     if @user.update(user_params)
       flash[:notice] = "ユーザープロフィールを更新しました。"
-      redirect_to :users_profile, status: :unprocessable_entity
+      redirect_to users_account_path
     else
       render "edit"
     end

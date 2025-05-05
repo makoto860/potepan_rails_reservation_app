@@ -1,37 +1,39 @@
 <h1>施設編集</h1>
 
-<%= form_with model: @room do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :room_name, "施設名" %></th>
-      <td><%= f.text_field :room_name %></td>
-    </tr>
+<div class="room-edit-field">
+  <%= form_with model: @room do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :room_name, "施設名" %></th>
+        <td><%= f.text_field :room_name %></td>
+      </tr>
 
-    <tr>
-      <th><%= f.label :room_avatar, "施設イメージ" %></th>
-      <td><%= f.file_field :room_avatar %></td>
-    </tr>
+      <tr>
+        <th><%= f.label :room_avatar, "施設イメージ" %></th>
+        <td><%= f.file_field :room_avatar %></td>
+      </tr>
 
-    <tr>
-      <th><%= f.label :room_detail, "施設詳細" %></th>
-      <td><%= f.text_area :room_detail %></td>
-    </tr>
+      <tr>
+        <th><%= f.label :room_detail, "施設詳細" %></th>
+        <td><%= f.text_area :room_detail %></td>
+      </tr>
 
-    <tr>
-      <th><%= f.label :fee, "料金" %></th>
-      <td><%= f.number_field :fee %>円</td>
-    </tr>
+      <tr>
+        <th><%= f.label :fee, "料金" %></th>
+        <td><%= f.number_field :fee %>円</td>
+      </tr>
 
-    <tr>
-      <th><%= f.label :address, "住所" %></th>
-      <td><%= f.text_field :address %></td>
-    </tr>
+      <tr>
+        <th><%= f.label :address, "住所" %></th>
+        <td><%= f.text_field :address %></td>
+      </tr>
 
-  </table>
+    </table>
 
-  <div>
-    <ul>
-      <li><%= f.submit "施設編集" %></li>
-    </ul>
-  </div>
-<% end %>
+    <div>
+      <ul>
+        <li><%= f.submit "施設編集をする" %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>

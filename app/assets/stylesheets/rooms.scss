@@ -1,3 +1,29 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.keyword-search-input {
+    width: 25%;
+}
+
+.room-own-field {
+    display: flex;
+    width: 100%;
+}
+
+.room-field {
+    width: 400px;
+    height: 4000px;
+}
+
+.room-new-field {
+    margin-left: 40%;
+    margin-top: 50px;
+}
+
+.room-show-field {
+    margin-left: 30%;
+}
+
+.room-edit-field {
+    margin-left: 40%;
+}

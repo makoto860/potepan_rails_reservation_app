@@ -1,8 +1,9 @@
+<div class="room-new-field">
 <h1>施設の新規作成</h1>
 
 <%= render "shared/errors", model: @room %>
 
-<p>施設名、施設詳細、施設料金、住所は必須です</p>
+<p>*施設名、施設詳細、施設料金、住所は必須です</p>
 
 <%= form_with model: @room do |f| %>
   <table>
@@ -38,3 +39,4 @@
     </ul>
   </div>
 <% end %>
+</div>

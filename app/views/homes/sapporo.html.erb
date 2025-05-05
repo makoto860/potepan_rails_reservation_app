@@ -4,74 +4,76 @@
   <p><%= @rooms.count %>件が見つかりました</p>
 </div>
 
-<% if user_signed_in? %>
-  <% @rooms.each do |room| %>
-    <table class="show-table">
-      <tr>
-        <th>施設名</th>
-        <td><%=link_to room.room_name, room_path(room.id) %></td>
-      </tr>
+<div class="sapporo-table">
+  <% if user_signed_in? %>
+    <% @rooms.each do |room| %>
+      <table class="show-table">
+        <tr>
+          <th>施設名</th>
+          <td><%=link_to room.room_name, room_path(room.id) %></td>
+        </tr>
 
-      <tr>
-        <th>施設詳細</th>
-        <td><%= room.room_detail %></td>
-      </tr>
+        <tr>
+          <th>施設詳細</th>
+          <td><%= room.room_detail %></td>
+        </tr>
 
-      <tr>
-        <th>施設料金</th>
-        <td><%= room.fee %>円</td>
-      </tr>
+        <tr>
+          <th>施設料金</th>
+          <td><%= room.fee %>円</td>
+        </tr>
 
-      <tr>
-        <th>住所</th>
-        <td><%= room.address %></td>
-      </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= room.address %></td>
+        </tr>
 
-      <tr>
-        <th>施設イメージ</th>
-        <td>
-          <% if room.room_avatar.attached? %>
-            <%= image_tag room.room_avatar, size: '100x100' %>
-          <% else %>
-            <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
+        <tr>
+          <th>施設イメージ</th>
+          <td>
+            <% if room.room_avatar.attached? %>
+              <%= image_tag room.room_avatar, size: '100x100' %>
+            <% else %>
+              <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  <% else %>
+    <% @rooms.each do |room| %>
+      <table class="show-table">
+        <tr>
+          <th>施設名</th>
+          <td><%= room.room_name %></td>
+        </tr>
+
+        <tr>
+          <th>施設詳細</th>
+          <td><%= room.room_detail %></td>
+        </tr>
+
+        <tr>
+          <th>施設料金</th>
+          <td><%= room.fee %>円</td>
+        </tr>
+
+        <tr>
+          <th>住所</th>
+          <td><%= room.address %></td>
+        </tr>
+
+        <tr>
+          <th>施設イメージ</th>
+          <td>
+            <% if room.room_avatar.attached? %>
+              <%= image_tag room.room_avatar, size: '100x100' %>
+            <% else %>
+              <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
   <% end %>
-<% else %>
-  <% @rooms.each do |room| %>
-    <table class="show-table">
-      <tr>
-        <th>施設名</th>
-        <td><%= room.room_name %></td>
-      </tr>
-
-      <tr>
-        <th>施設詳細</th>
-        <td><%= room.room_detail %></td>
-      </tr>
-
-      <tr>
-        <th>施設料金</th>
-        <td><%= room.fee %>円</td>
-      </tr>
-
-      <tr>
-        <th>住所</th>
-        <td><%= room.address %></td>
-      </tr>
-
-      <tr>
-        <th>施設イメージ</th>
-        <td>
-          <% if room.room_avatar.attached? %>
-            <%= image_tag room.room_avatar, size: '100x100' %>
-          <% else %>
-            <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-<% end %>
+</div>

@@ -13,43 +13,51 @@
   </head>
 
   <body>
-    <header>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <header class="nav-bar">
 
-      <p><%= link_to "TOP", homes_top_path %></p>
+      <div class="left-header">
+        <p><%= link_to "Potepan Share", homes_top_path, class: "left-header_url" %></p>
+      </div>
 
-      <% if current_user.present? %>
-        <p>
-          <% if @user.user_avatar.attached? %>
-            <%= image_tag @user.user_avatar, size: '100x100' %>
+      <div class="right-header">
+        <div class="header-icon">
+          <% if current_user.present? %>
+            <% if @user.user_avatar.attached? %>
+              <p><%= image_tag @user.user_avatar, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %></p>
+            <% else %>
+              <p><%= image_tag asset_path('default-user-avatar.png'), style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %></p>
+            <% end %>
+
+            <div class="nav-content">
+              <div class="#" id="#">
+                <a href="#" class="dropdown-toggle" id="#" role="#" data-toggle="dropdown" aria-haspopup="#" aria-expanded="#">
+                  <p>ユーザー名: <%= current_user.user_name %></p>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="#" >
+                  <li><%= link_to "施設の新規登録", new_room_path %></li>
+                  <li><%= link_to "予約済み一覧", reservations_path %></li>
+                  <li><%= link_to "ユーザーが登録した施設一覧", rooms_own_path %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  <li><%= link_to "アカウント", users_account_path %></li>
+                </ul>
+              </div>
+            </div>
           <% else %>
-            <%= image_tag asset_path('default-user-avatar.png'), size: '100x100' %>
+            <div class="right-nonlogin-header">
+              <ul>
+                <li><%= link_to "新規ログイン", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+              </ul>
+            </div>
           <% end %>
-        </p>
-
-        <div class="#" id="#">
-          <a href="#" class="dropdown-toggle" id="#" role="#" data-toggle="dropdown" aria-haspopup="#" aria-expanded="#">
-            <p>ユーザー名: <%= current_user.user_name %></p>
-          </a>
-
-          <ul class="dropdown-menu" aria-labelledby="#" >
-            <li><%= link_to "施設の新規登録", new_room_path %></li>
-            <li><%= link_to "予約済み一覧", reservations_path %></li>
-            <li><%= link_to "ユーザーが登録した施設一覧", rooms_own_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "アカウント", users_account_path %></li>
-          </ul>
+          <br>
         </div>
-
-      <% else %>
-        <ul>
-          <li><%= link_to "新規ログイン", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-        </ul>
-      <% end %>
-      <br>
+      </div>
     </header>
+
+    <h2 class="notice"><%= notice %></h2>
+    <h2 class="alert"><%= alert %></h2>
     <%= yield %>
   </body>
 </html>

@@ -1,58 +1,37 @@
 <h1>予約内容の一覧</h1>
 
-<% @reservations.each do |reservation| %>
+<div class="reservations-index-field">
   <table>
     <tr>
       <th>施設画像</th>
-      <td>
-        <% if reservation.room.room_avatar.attached? %>
-          <%= image_tag reservation.room.room_avatar, size: '100x100' %>
-        <% else %>
-          <%= image_tag asset_path('default-room-avatar.png'), size: '100x100' %>
-        <% end %>
-      </td>
-    </tr>
-
-    <tr>
       <th>施設名</th>
-      <td><%= reservation.room.room_name %></td>
-    </tr>
-
-    <tr>
       <th>施設紹介文</th>
-      <td><%= reservation.room.room_detail %></td>
-    </tr>
-
-    <tr>
       <th>料金</th>
-      <td><%= reservation.room.fee %>円</td>
-    </tr>
-
-    <tr>
       <th>合計人数</th>
-      <td><%= reservation.total_people %>人</td>
-    </tr>
-
-    <tr>
       <th>チェックイン日</th>
-      <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
-    </tr>
-
-    <tr>
       <th>チェックアウト日</th>
-      <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
-    </tr>
-
-    <tr>
       <th>合計料金</th>
-      <td><%= reservation.sum_of_fee %>円</td>
-    </tr>
-
-    <tr>
       <th>予約確定日時</th>
-      <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     </tr>
 
-    </table>
-    <p>------------------------------------------------------------------------------------------------------</p>
-<% end %>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+          <% if reservation.room.room_avatar.attached? %>
+            <%= image_tag reservation.room.room_avatar %>
+          <% else %>
+            <%= image_tag asset_path('default-room-avatar.png') %>
+          <% end %>
+        </td>  
+        <td><%= reservation.room.room_name %></td>
+        <td><%= reservation.room.room_detail %></td>
+        <td><%= reservation.room.fee %>円</td>
+        <td><%= reservation.total_people %>人</td>
+        <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
+        <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
+        <td><%= reservation.sum_of_fee %>円</td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

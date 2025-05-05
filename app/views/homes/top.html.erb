@@ -1,12 +1,33 @@
-<h1>トップ画面</h1>
+<div class="FirstViewSearch">
+  <div class="Search">
+    <%= form_with url: homes_area_search_path, local: true, method: :get do |f|%>
+      <%= f.text_field :address, placeholder: "エリア", class: 'btn-field' %>
+      <%= f.submit "エリア検索", class: 'btn' %>
+    <% end %>
+  </div>
+</div>
 
-<p>エリア検索</p>
-<%= form_with url: homes_area_search_path, local: true, method: :get do |f|%>
-  <%= f.text_field :address, placeholder: "エリア" %>
-  <%= f.submit "エリア検索"%>
-<% end %>
+<div class="#">
+  <h2 class="#" >おすすめエリア</h2>
+  <div class="area">
+    <ul>
+      <li><%= image_tag asset_path('tokyo.jpg') %></li>
+      <li><%= link_to "東京", homes_tokyo_path %></li>
+    </ul>
 
-<p><%= link_to "東京", homes_tokyo_path %></p>
-<p><%= link_to "京都", homes_kyoto_path %></p>
-<p><%= link_to "大阪", homes_osaka_path %></p>
-<p><%= link_to "札幌", homes_sapporo_path %></p>
+    <ul>
+      <li><%= image_tag asset_path('kyoto.jpg') %></li>
+      <li><%= link_to "京都", homes_kyoto_path %></li>
+    </ul>
+
+    <ul>
+      <li><%= image_tag asset_path('osaka.jpg') %></li>
+      <li><%= link_to "大阪", homes_osaka_path %></li>
+    </ul>
+
+    <ul>
+      <li><%= image_tag asset_path('sapporo.jpg') %></li>
+      <li><%= link_to "札幌", homes_sapporo_path %></li>
+    </ul>
+  </div>
+</div>

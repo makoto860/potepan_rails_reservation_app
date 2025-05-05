@@ -1,19 +1,15 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
-
 <h1>プロフィール画面</h1>
 
-<p><%= link_to "プロフィールを編集する", edit_user_path(@user) %></p>
-
-<p>
-  ユーザーアイコン:
+<div class="users-profile-field">
+  <p><%= link_to "プロフィールを編集する", edit_user_path(@user) %></p>
+  <br>
   <% if @user.user_avatar.attached? %>
-    <%= image_tag @user.user_avatar, size: '100x100' %>
+    <%= image_tag @user.user_avatar, style: "border-radius: 50%; width: 200px; height: 200px;" %>
   <% else %>
-    <%= image_tag asset_path('default-user-avatar.png'), size: '100x100' %>
+    <%= image_tag asset_path('default-user-avatar.png'), style: "border-radius: 50%; width: 200px; height: 200px;" %>
   <% end %>
-</p>
-
-<p>ユーザー名: <%= @user.user_name %></p>
-
-<p>ユーザー紹介: <%= @user.user_introduction %></p>
+  <br>
+  <p>ユーザー名: <%= @user.user_name %></p>
+  <br>
+  <p>ユーザー紹介: <%= @user.user_introduction %></p>
+</div>
